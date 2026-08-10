@@ -1,0 +1,11 @@
+{
+  "name": "gh200-support-portal",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Beginner-friendly GH-200 GitHub Actions demo application",
+  "scripts": {
+    "build": "node scripts/build.js",
+    "test": "node --test",
+    "start": "node server.js"
+  }
+}
