@@ -54,5 +54,26 @@ jobs:
           dist/
         retention-days: 2
       
- 
+  deploy:
+    name: Deploy to Azure WebApp
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: production
+      url: https://${{ secrets.AZURE_WEBAPP_NAME }}.azurewebsites.net
+
+    steps:
+      - name: Download Deployment Artifact
+        uses: actions/download-artifact@v8.0.0
+        with:
+          name: support-portal-package
+          path: app
+
+      - name: Deploy to Azure App Service
+        uses: Azure/webapps-deploy@v3.0.7
+        with:
+          app-name: ${{ secrets.AZURE_WEBAPP_NAME }}
+          publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE}}
+          package: app
+    
     
