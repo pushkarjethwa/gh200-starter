@@ -9,6 +9,7 @@ on:
 #workflow level env variables
 env:
   APP_NAME: customer-support-portal
+  AZURE_WEBAPP_NAME: customersupport2026-bzhrdyfhd2arc7dw.eastus2-01
 
   
 jobs:
@@ -60,7 +61,7 @@ jobs:
     runs-on: ubuntu-latest
     environment:
       name: production
-      url: https://${{ secrets.AZURE_WEBAPP_NAME }}.azurewebsites.net
+      url: https://${{ vars.AZURE_WEBAPP_NAME}}.azurewebsites.net
 
     steps:
       - name: Download Deployment Artifact
@@ -72,7 +73,7 @@ jobs:
       - name: Deploy to Azure App Service
         uses: Azure/webapps-deploy@v3.0.7
         with:
-          app-name: ${{ secrets.AZURE_WEBAPP_NAME }}
+          app-name: ${{ vars.AZURE_WEBAPP_NAME }}
           publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE}}
           package: app
     
