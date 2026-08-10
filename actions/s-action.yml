@@ -1,0 +1,14 @@
+name: "Support Portal Greeting"
+description: "Tiny container action used in the GH-200 demo"
+
+inputs:
+  who-to-greet:
+    description: "Who should be greeted"
+    required: true
+    default: "GH-200 learner"
+
+runs:
+  using: "docker"
+  image: "Dockerfile"
+  args:
+    - ${{ inputs.who-to-greet }}
