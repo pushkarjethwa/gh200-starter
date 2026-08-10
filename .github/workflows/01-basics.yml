@@ -1,0 +1,29 @@
+name: "01-GH200-Basics"
+
+on: 
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  inspect:
+    name: Basic Workflow Components
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repo
+        uses: actions/checkout@v7
+
+      - name: Greetings
+        uses: ./s-action
+        with:
+          who-to-greet: "Github Learners"
+
+      - name: Show event and runner information
+        run: |
+          echo "Triggered by: ${{ github.event_name }}"
+          echo "Commit SHA  : ${{ github.sha }}"
+          echo "Git ref     : $GITHUB_REF"
+          echo "Runner OS   : $RUNNER_OS"
+
+      
