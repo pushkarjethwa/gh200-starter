@@ -9,7 +9,7 @@ on:
 #workflow level env variables
 env:
   APP_NAME: customer-support-portal
-  AZURE_WEBAPP_NAME: customersupport2026-bzhrdyfhd2arc7dw.eastus2-01
+  AZURE_WEBAPP_NAME: customersupport2026
 
   
 jobs:
